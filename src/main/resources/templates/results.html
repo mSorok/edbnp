@@ -1,0 +1,65 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Load results</title>
+</head>
+
+<body>
+<h1>Loaded files</h1>
+
+<!--
+
+<div th:if="${scores}">
+
+    <h1 th:text="${scores}"/>
+</div>
+-->
+
+
+<div th:if="${files_stats}">
+
+
+    <table>
+        <tr th:each="element : ${files_stats}">
+            <td th:text="${'* Loaded file: ' + element.key}">keyvalue</td>
+            <table>
+                <tr th:each="stat : ${element.value}">
+                    <td> | </td>
+                    <td th:text="${'Total number of molecules in file: ' + stat.first}">First number</td>
+                    <td> | </td>
+                    <td th:text="${ 'Number of valid loaded molecules: ' + stat.second}">Second number</td>
+                    <td> | </td>
+
+                </tr>
+            </table>
+        </tr>
+    </table>
+
+</div>
+
+<!--
+<div>
+    Molecules submitted:
+    <ul>
+        <li th:each="score : ${scores}">
+            <p th:text="${score}" />
+        </li>
+    </ul>
+</div>
+
+-->
+
+
+
+<form action="/">
+    <input type="submit" value="Submit more molecules" />
+</form>
+
+
+<form action="workonmolecules">
+    <input type="submit" value="Insert molecules in database" />
+</form>
+
+
+</body>
+</html>
